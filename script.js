@@ -39,10 +39,17 @@ const timelineData = {
         photos: ["planproj1.png", "planproj2.png"]
     },
     {
+        date: "2013",
+        titre: "Plan maison d'habitation",  
+        temps: "Sketchup Home 3D",
+        descriptif: "plan technique sur Sketchup afin de budjetiser la maconnerie et la couverture, ainsi que plan d'éléctricité",
+        photos: ["planmh (0).png","planmh (00).png","planmh (1).jpg", "planmh (2).jpg", "planmh (3).jpg", "planmh (4).jpg"]
+    },
+    {
         date: "2019",
         titre: "Plan maison d'habitation",  
         temps: "Sketchup et Kosikaza",
-        descriptif: "Plan maison d'habitation",
+        descriptif: "Plan maison d'habitation pour client",
         photos: ["planan1.png", "planan2.png", "planan3.png"]
     },
     {
@@ -63,7 +70,7 @@ const timelineData = {
         date: "2022",
         titre: "Maison pour location",  
         temps: "Home 3D Squetchup",
-        descriptif: "Plan complet avec schéma réseaux électriques et demande pour RT2021",
+        descriptif: "Plan complet avec schéma réseaux électriques et demande pour RT2021, plan pour la maconnerie et la charpente sur Sketchup pour chiffrage",
         photos: ["planperso1.png", "planperso2.png", "planperso3.png"]
     },
     {
@@ -79,8 +86,15 @@ const timelineData = {
         temps: "Home 3D",
         descriptif: "Plan complet pour client avec demande pour RT2021",
         photos: ["planfa1.png", "planfa2.png", "planfa3.png", "planfa4.png"]
+    },
+    {
+        date: "2024",
+        titre: "Extension maison d'habitation",  
+        temps: "Home 3D",
+        descriptif: "Plan d'extention avec diverses options de projection pour aide a la décision de la construction",
+        photos: ["planvois (1).png", "planvois (2).png", "planvois (3).png"]
     }],
-
+        //###########################Codeage###################################
     Codage: [{
         date: "Depuis 2019",
         titre: "Ruby on Rails",
