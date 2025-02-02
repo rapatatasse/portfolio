@@ -60,6 +60,13 @@ const timelineData = {
         photos: ["planga1.png", "planga2.png"]
     },
     {
+        date: "2020",
+        titre: "Plan pour maison au Perou",  
+        temps: "Home 3D",
+        descriptif: "Demande client pour création maison d'habitation au Pérou. Recherche des normes et des materiaux utilisés",
+        photos: ["planpav1.png", "planpav2.png", "planpav3.png"]
+    },
+    {
         date: "2021",
         titre: "Plan client",  
         temps: "Home 3D",
