@@ -61,7 +61,7 @@ const timelineData = {
     },
     {
         date: "2020",
-        titre: "Plan pour maison au Perou",  
+        titre: "Plan pour client maison au Perou",  
         temps: "Home 3D",
         descriptif: "Demande client pour création maison d'habitation au Pérou. Recherche des normes et des materiaux utilisés",
         photos: ["planpav1.png", "planpav2.png", "planpav3.png"]
