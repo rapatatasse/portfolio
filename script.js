@@ -24,84 +24,84 @@ const timelineData = {
     }],
 
     Plandeconstruction: [
-    {
-        date: "2006",
-        titre: "Plan pour ERP",  
-        temps: "Arcitect3D",
-        descriptif: "1ère expérience en dessin technique pour dépôt de plan avec plan pour ERP et plan électrique avec triphasé. Dessin sur logiciel Arcitect3D",
-        photos: ["planauberge1.jpg", "planauberge2.jpg"]
-    },
-    {
-        date: "2012",
-        titre: "Plan hotel",  
-        temps: "Sketchup",
-        descriptif: "Suite à la découverte de mon blog sur conseil construction et maison troglodyte j'élabore un visuel sous Sketchup pour habitation de vacances",
-        photos: ["planproj1.png", "planproj2.png"]
-    },
-    {
-        date: "2013",
-        titre: "Plan maison d'habitation",  
-        temps: "Sketchup Home 3D",
-        descriptif: "plan technique sur Sketchup afin de budjetiser la maconnerie et la couverture, ainsi que plan d'éléctricité",
-        photos: ["planmh (0).png","planmh (00).png","planmh (1).jpg", "planmh (2).jpg", "planmh (3).jpg", "planmh (4).jpg"]
-    },
-    {
-        date: "2019",
-        titre: "Plan maison d'habitation",  
-        temps: "Sketchup et Kosikaza",
-        descriptif: "Plan maison d'habitation pour client",
-        photos: ["planan1.png", "planan2.png", "planan3.png"]
-    },
-    {
-        date: "2020",
-        titre: "Plan déclaration cabanon",  
-        temps: "Home 3D",
-        descriptif: "Demande client pour création local de stockage",
-        photos: ["planga1.png", "planga2.png"]
-    },
-    {
-        date: "2020",
-        titre: "Plan pour client maison au Perou",  
-        temps: "Home 3D",
-        descriptif: "Demande client pour création maison d'habitation au Pérou. Recherche des normes et des materiaux utilisés",
-        photos: ["planpav1.png", "planpav2.png", "planpav3.png"]
-    },
-    {
-        date: "2021",
-        titre: "Plan client",  
-        temps: "Home 3D",
-        descriptif: "Accompagnement complet client pour structurer leurs envies et besoin et dépôt du plan",
-        photos: ["plander1.png", "plander2.png", "plander3.png"]
-    },
-    {
-        date: "2022",
-        titre: "Maison pour location",  
-        temps: "Home 3D Squetchup",
-        descriptif: "Plan complet avec schéma réseaux électriques et demande pour RT2021, plan pour la maconnerie et la charpente sur Sketchup pour chiffrage",
-        photos: ["planperso1.png", "planperso2.png", "planperso3.png"]
-    },
-    {
-        date: "2023",
-        titre: "Maison d'habitation",  
-        temps: "Home 3D",
-        descriptif: "Plan complet pour client avec demande pour RT2021",
-        photos: ["planbl1.png", "planbl2.png", "planbl3.png", "planbl4.png"]
-    },
-    {
-        date: "2024",
-        titre: "Maison d'habitation",  
-        temps: "Home 3D",
-        descriptif: "Plan complet pour client avec demande pour RT2021",
-        photos: ["planfa1.png", "planfa2.png", "planfa3.png", "planfa4.png"]
-    },
-    {
-        date: "2024",
-        titre: "Extension maison d'habitation",  
-        temps: "Home 3D",
-        descriptif: "Plan d'extention avec diverses options de projection pour aide a la décision de la construction",
-        photos: ["planvois (1).png", "planvois (2).png", "planvois (3).png"]
-    }],
-        //###########################Codeage###################################
+        {
+            date: "2006",
+            titre: "Plan pour ERP",
+            temps: "Arcitect3D",
+            descriptif: "1ère expérience en dessin technique pour dépôt de plan avec plan pour ERP et plan électrique avec triphasé. Dessin sur logiciel Arcitect3D",
+            photos: ["planauberge1.jpg", "planauberge2.jpg"]
+        },
+        {
+            date: "2012",
+            titre: "Plan hotel",
+            temps: "Sketchup",
+            descriptif: "Suite à la découverte de mon blog sur conseil construction et maison troglodyte j'élabore un visuel sous Sketchup pour habitation de vacances",
+            photos: ["planproj1.png", "planproj2.png"]
+        },
+        {
+            date: "2013",
+            titre: "Plan maison d'habitation",
+            temps: "Sketchup Home 3D",
+            descriptif: "plan technique sur Sketchup afin de budjetiser la maconnerie et la couverture, ainsi que plan d'éléctricité",
+            photos: ["planmh (0).png", "planmh (00).png", "planmh (1).jpg", "planmh (2).jpg", "planmh (3).jpg", "planmh (4).jpg"]
+        },
+        {
+            date: "2019",
+            titre: "Plan maison d'habitation",
+            temps: "Sketchup et Kosikaza",
+            descriptif: "Plan maison d'habitation pour client",
+            photos: ["planan1.png", "planan2.png", "planan3.png"]
+        },
+        {
+            date: "2020",
+            titre: "Plan déclaration cabanon",
+            temps: "Home 3D",
+            descriptif: "Demande client pour création local de stockage",
+            photos: ["planga1.png", "planga2.png"]
+        },
+        {
+            date: "2020",
+            titre: "Plan pour client maison au Perou",
+            temps: "Home 3D",
+            descriptif: "Demande client pour création maison d'habitation au Pérou. Recherche des normes et des materiaux utilisés",
+            photos: ["planpav1.png", "planpav2.png", "planpav3.png"]
+        },
+        {
+            date: "2021",
+            titre: "Plan client",
+            temps: "Home 3D",
+            descriptif: "Accompagnement complet client pour structurer leurs envies et besoin et dépôt du plan",
+            photos: ["plander1.png", "plander2.png", "plander3.png"]
+        },
+        {
+            date: "2022",
+            titre: "Maison pour location",
+            temps: "Home 3D Squetchup",
+            descriptif: "Plan complet avec schéma réseaux électriques et demande pour RT2021, plan pour la maconnerie et la charpente sur Sketchup pour chiffrage",
+            photos: ["planperso1.png", "planperso2.png", "planperso3.png"]
+        },
+        {
+            date: "2023",
+            titre: "Maison d'habitation",
+            temps: "Home 3D",
+            descriptif: "Plan complet pour client avec demande pour RT2021",
+            photos: ["planbl1.png", "planbl2.png", "planbl3.png", "planbl4.png"]
+        },
+        {
+            date: "2024",
+            titre: "Maison d'habitation",
+            temps: "Home 3D",
+            descriptif: "Plan complet pour client avec demande pour RT2021",
+            photos: ["planfa1.png", "planfa2.png", "planfa3.png", "planfa4.png"]
+        },
+        {
+            date: "2024",
+            titre: "Extension maison d'habitation",
+            temps: "Home 3D",
+            descriptif: "Plan d'extention avec diverses options de projection pour aide a la décision de la construction",
+            photos: ["planvois (1).png", "planvois (2).png", "planvois (3).png"]
+        }],
+    //###########################Codeage###################################
     Codage: [{
         date: "Depuis 2019",
         titre: "Ruby on Rails",
@@ -134,8 +134,8 @@ const timelineData = {
         date: "Depuis 2024",
         titre: "Application Kotlin",
         temps: "Débutant",
-        descriptif: "Projet en cours : réalisation d'une application de gestion de bornes et comptes avec cartographie",
-        photos: ["kotlin (1).png", "kotlin (2).png", "kotlin (3).png"]
+        descriptif: "Dérnier projet réalisation d'une application de gestion de bornes et comptes avec cartographie",
+        photos: ["kotlin (0).png", "kotlin (1).png", "kotlin (2).png", "kotlin (3).png"]
     }]
 };
 
@@ -183,19 +183,19 @@ function moveCarousel(direction, carousel) {
     const container = carousel.querySelector('.carousel-container');
     const slides = carousel.querySelectorAll('.carousel-slide');
     const dots = carousel.querySelectorAll('.carousel-dot');
-    
+
     // Récupérer l'index actuel
     const transformValue = container.style.transform || 'translateX(0%)';
     let currentIndex = parseInt(transformValue.match(/-?[\d]+/)[0]) / -100 || 0;
-    
+
     // Calculer le nouvel index
     currentIndex += direction;
     if (currentIndex < 0) currentIndex = slides.length - 1;
     if (currentIndex >= slides.length) currentIndex = 0;
-    
+
     // Déplacer le carrousel
     container.style.transform = `translateX(-${currentIndex * 100}%)`;
-    
+
     // Mettre à jour les points
     dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === currentIndex);
@@ -206,9 +206,9 @@ function moveCarousel(direction, carousel) {
 function goToSlide(index, carousel) {
     const container = carousel.querySelector('.carousel-container');
     const dots = carousel.querySelectorAll('.carousel-dot');
-    
+
     container.style.transform = `translateX(-${index * 100}%)`;
-    
+
     dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === index);
     });
@@ -228,23 +228,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('imageModal');
     const closeBtn = document.querySelector('.modal-close');
     const competencesGrid = document.querySelector('.competences-grid');
-    
+
     // Gestionnaire pour les cartes de compétences
     competenceItems.forEach(item => {
         item.addEventListener('click', () => {
             // Retirer la classe active de tous les items
             competenceItems.forEach(i => i.classList.remove('active'));
-            
+
             // Ajouter la classe active à l'item cliqué
             item.classList.add('active');
-            
+
             // Réorganiser les cartes
             const cards = Array.from(competenceItems);
             const clickedIndex = cards.indexOf(item);
-            
+
             // Retirer toutes les cartes du DOM
             cards.forEach(card => card.remove());
-            
+
             // Réinsérer les cartes dans le bon ordre
             if (clickedIndex === 0) {
                 // Si on clique sur la première carte
@@ -262,18 +262,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 competencesGrid.appendChild(cards[1]);
                 competencesGrid.appendChild(cards[2]);
             }
-            
+
             // Afficher la timeline correspondante
             const category = item.getAttribute('data-category');
             showTimeline(category);
         });
     });
-    
+
     // Gestionnaire pour fermer la modale
     closeBtn.addEventListener('click', () => {
         modal.style.display = "none";
     });
-    
+
     // Fermer la modale en cliquant en dehors de l'image
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
@@ -286,16 +286,16 @@ document.addEventListener('DOMContentLoaded', () => {
 function showTimeline(category) {
     const timelineContainer = document.getElementById('competence-timeline');
     const timelineItems = document.querySelector('#competence-timeline .formation-items');
-    
+
     timelineContainer.style.display = 'none';
-    
+
     if (timelineData[category]) {
         const timelineHTML = timelineData[category]
             .map((item, index) => createTimelineItem(item, index))
             .join('');
-        
+
         timelineItems.innerHTML = timelineHTML;
-        
+
         timelineContainer.style.display = 'block';
         timelineContainer.style.opacity = '0';
         setTimeout(() => {
