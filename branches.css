@@ -16,7 +16,7 @@ html, body { height: 100%; overflow: hidden; background: #0b0f14; color: #c9d1d9
 .back { display: inline-block; margin-top: 14px; font-size: 12px; color: #8b949e; text-decoration: none; }
 .back:hover { color: #f0f6fc; }
 
-#detail { position: fixed; top: 20px; bottom: 90px; left: 24px; width: 340px; background: rgba(13,17,23,.94); border: 1px solid #30363d; border-radius: 10px; padding: 18px; overflow-y: auto; transition: transform .35s ease, opacity .35s; z-index: 5; }
+#detail { position: fixed; top: 20px; bottom: 90px; left: 24px; width: 540px; background: rgba(13,17,23,.94); border: 1px solid #30363d; border-radius: 10px; padding: 18px; overflow-y: auto; transition: transform .35s ease, opacity .35s; z-index: 5; }
 #detail.hidden { transform: translateX(-30px); opacity: 0; pointer-events: none; }
 #detail-close { position: absolute; top: 8px; right: 12px; background: none; border: 0; color: #8b949e; font-size: 24px; cursor: pointer; z-index: 2; }
 #detail-close:hover { color: #fff; }

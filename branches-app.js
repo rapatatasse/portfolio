@@ -1,6 +1,6 @@
 (function () {
     const D = PORTFOLIO_DATA;
-    const K = 12, LANE_K = 1.6;
+    const K = 16, LANE_K = 2.25;
     const MONTHS = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
     const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
     const smooth = t => { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
@@ -51,7 +51,7 @@
         const cum = [0];
         for (let i = 1; i < pts.length; i++) cum.push(cum[i - 1] + pts[i].distanceTo(pts[i - 1]));
         const total = cum[cum.length - 1];
-        const tube = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), pts.length * 2, 0.35, 6, false);
+        const tube = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), pts.length * 2, 0.5, 6, false);
         const tubular = pts.length * 2;
         return { pts, cum, total, tube, tubular };
     }
@@ -68,37 +68,37 @@
     const mainEnd = X(NOW);
     const mainPts = []; for (let x = 0; x <= mainEnd; x += 1) mainPts.push(new THREE.Vector3(x, 0, 0));
     const mainPath = buildPath(mainPts);
-    mainPath.tube = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(mainPts), mainPts.length, 0.6, 8, false);
+    mainPath.tube = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(mainPts), mainPts.length, 0.8, 8, false);
     mainPath.tubular = mainPts.length;
     const mainMesh = new THREE.Mesh(mainPath.tube, new THREE.MeshBasicMaterial({ color: 0xe6edf3 }));
     scene.add(mainMesh);
 
     const birthDot = sphere(1.2, 0xffffff); scene.add(birthDot);
-    const birthLabel = label("Naissance · " + fmtDate(BIRTH).toLowerCase(), 2.6, "#e6edf3", "600");
-    birthLabel.position.set(12, 5.5, 0); scene.add(birthLabel);
+    const birthLabel = label("Naissance · " + fmtDate(BIRTH).toLowerCase(), 3.4, "#e6edf3", "600");
+    birthLabel.position.set(16, 7, 0); scene.add(birthLabel);
 
     const yearDots = [];
     for (let y = Math.ceil(BIRTH); y <= NOW; y++) {
         const big = y % 5 === 0;
-        const d = sphere(big ? 1 : 0.45, big ? 0xe6edf3 : 0x6e7681);
+        const d = sphere(big ? 1.3 : 0.6, big ? 0xe6edf3 : 0x6e7681);
         d.position.set(X(y), 0, 0); scene.add(d);
         const it = { yr: y, mesh: d, label: null };
         if (big) {
-            const l = label(y + " · " + ageAt(y) + " ans", 2.2, "#8b949e");
-            l.position.set(X(y), -4.6, 0); scene.add(l); it.label = l;
+            const l = label(y + " · " + ageAt(y) + " ans", 3, "#8b949e");
+            l.position.set(X(y), -6, 0); scene.add(l); it.label = l;
         }
         yearDots.push(it);
     }
 
-    const cursorDot = sphere(1.4, 0xffffff); scene.add(cursorDot);
+    const cursorDot = sphere(1.9, 0xffffff); scene.add(cursorDot);
     const cursorLine = new THREE.Line(
-        new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, -260, 0), new THREE.Vector3(0, 260, 0)]),
+        new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, -400, 0), new THREE.Vector3(0, 400, 0)]),
         new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.12 }));
     scene.add(cursorLine);
 
     /* Branches */
-    const cardW = 14, cardH = 8.75;
-    const SLOTS = [9.5, -9.5, 20, -20];
+    const cardW = 20, cardH = 12.5;
+    const SLOTS = [13, -13, 28, -28];
     const hitList = [];
 
     branches.forEach(b => {
@@ -124,8 +124,8 @@
         b.mesh = new THREE.Mesh(b.path.tube, b.mat);
         scene.add(b.mesh);
 
-        b.nameLabel = label(b.name, 3.6, b.color, "600");
-        b.nameLabel.position.set(laneX - 3, b.lane + 4, b.z);
+        b.nameLabel = label(b.name, 5, b.color, "600");
+        b.nameLabel.position.set(laneX - 4, b.lane + 5.5, b.z);
         b.nameLabel.center.set(1, 0.5);
         scene.add(b.nameLabel);
 
@@ -145,11 +145,11 @@
 
             const g = new THREE.Group(); g.position.set(x0, b.lane, b.z); scene.add(g);
             e.group = g;
-            e.node = sphere(1.4, color); g.add(e.node);
+            e.node = sphere(2, color); g.add(e.node);
             e.node.userData.exp = e;
 
             const spanLen = x1 - x0;
-            e.span = new THREE.Mesh(new THREE.CylinderGeometry(0.75, 0.75, spanLen, 10), new THREE.MeshBasicMaterial({ color, transparent: true }));
+            e.span = new THREE.Mesh(new THREE.CylinderGeometry(1, 1, spanLen, 10), new THREE.MeshBasicMaterial({ color, transparent: true }));
             e.span.rotation.z = Math.PI / 2; e.span.userData.full = spanLen; scene.add(e.span);
             e.spanBase = { y: b.lane, z: b.z };
 
@@ -159,7 +159,7 @@
                 new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.5 }));
             g.add(e.link);
 
-            e.canvas = document.createElement("canvas"); e.canvas.width = 512; e.canvas.height = 320;
+            e.canvas = document.createElement("canvas"); e.canvas.width = 768; e.canvas.height = 480;
             e.tex = new THREE.CanvasTexture(e.canvas);
             e.tex.anisotropy = 4;
             drawCard(e, null);
@@ -195,7 +195,8 @@
         return lines;
     }
     function drawCard(e, img) {
-        const c = e.canvas, ctx = c.getContext("2d"), W = c.width, H = c.height, imgH = 190;
+        const c = e.canvas, ctx = c.getContext("2d"), W = 512, H = 320, imgH = 150;
+        ctx.setTransform(c.width / W, 0, 0, c.height / H, 0, 0);
         ctx.fillStyle = "#12171e"; ctx.fillRect(0, 0, W, H);
         ctx.fillStyle = "#1c232c"; ctx.fillRect(0, 0, W, imgH);
         if (img) {
@@ -204,27 +205,27 @@
             ctx.drawImage(img, (W - w) / 2, (imgH - h) / 2, w, h); ctx.restore();
         } else {
             ctx.fillStyle = e.b.color; ctx.globalAlpha = 0.18; ctx.fillRect(0, 0, W, imgH); ctx.globalAlpha = 1;
-            ctx.fillStyle = e.b.color; ctx.font = "600 30px 'Segoe UI', sans-serif"; ctx.textAlign = "center";
-            ctx.fillText(e.b.name.toUpperCase(), W / 2, imgH / 2 + 10); ctx.textAlign = "left";
+            ctx.fillStyle = e.b.color; ctx.font = "600 34px 'Segoe UI', sans-serif"; ctx.textAlign = "center";
+            ctx.fillText(e.b.name.toUpperCase(), W / 2, imgH / 2 + 12); ctx.textAlign = "left";
         }
-        ctx.fillStyle = e.b.color; ctx.fillRect(0, imgH, W, 4);
-        ctx.fillStyle = "#f0f6fc"; ctx.font = "600 27px 'Segoe UI', sans-serif"; ctx.textBaseline = "alphabetic";
-        wrap(ctx, e.title, W - 36, 2).forEach((l, i) => ctx.fillText(l, 18, imgH + 36 + i * 29));
-        ctx.fillStyle = "#8b949e"; ctx.font = "20px 'Segoe UI', sans-serif";
-        const endTxt = e.end === "now" ? "aujourd'hui" : e.end.slice(0, 4);
-        ctx.fillText(e.start.slice(0, 4) + " → " + endTxt, 18, H - 16);
+        ctx.fillStyle = e.b.color; ctx.fillRect(0, imgH, W, 5);
+        ctx.fillStyle = "#f0f6fc"; ctx.font = "600 36px 'Segoe UI', sans-serif"; ctx.textBaseline = "alphabetic";
+        wrap(ctx, e.title, W - 36, 2).forEach((l, i) => ctx.fillText(l, 18, imgH + 44 + i * 40));
+        ctx.fillStyle = "#a0a8b2"; ctx.font = "26px 'Segoe UI', sans-serif";
+        const endTxt = e.end === "now" ? "auj." : e.end.slice(0, 4);
+        ctx.fillText(e.start.slice(0, 4) + " → " + endTxt, 18, H - 18);
         const top = Object.entries(e.gains).sort((a, b) => b[1] - a[1])[0];
-        const tag = "+" + top[1] + " " + skillById[top[0]].label;
-        ctx.font = "600 19px 'Segoe UI', sans-serif";
+        const tag = "+" + top[1] + " " + (skillById[top[0]] ? skillById[top[0]].label : top[0]);
+        ctx.font = "600 24px 'Segoe UI', sans-serif";
         const tw = Math.min(ctx.measureText(tag).width, 300);
-        ctx.fillStyle = "#238636"; ctx.fillRect(W - tw - 36, H - 40, tw + 22, 28);
-        ctx.fillStyle = "#fff"; ctx.fillText(tag, W - tw - 25, H - 20, 300);
-        ctx.strokeStyle = e.b.color; ctx.lineWidth = 3; ctx.strokeRect(1.5, 1.5, W - 3, H - 3);
+        ctx.fillStyle = "#238636"; ctx.fillRect(W - tw - 34, H - 50, tw + 22, 36);
+        ctx.fillStyle = "#fff"; ctx.fillText(tag, W - tw - 23, H - 24, 300);
+        ctx.strokeStyle = e.b.color; ctx.lineWidth = 4; ctx.strokeRect(2, 2, W - 4, H - 4);
         e.tex.needsUpdate = true;
     }
 
     /* ---------- Caméra ---------- */
-    const view = { tx: 0, ty: 0, d: 80 }, goal = { tx: 0, ty: 0, d: 80 };
+    const view = { tx: 0, ty: 0, d: 120 }, goal = { tx: 0, ty: 0, d: 120 };
     let follow = true;
     function resize() {
         const w = innerWidth, h = innerHeight;
@@ -239,9 +240,9 @@
         const vis = branches.filter(b => b.path && cur >= b.forkYear);
         let lo = 0, hi = 0;
         vis.forEach(b => { lo = Math.min(lo, b.lane); hi = Math.max(hi, b.lane); });
-        const span = hi - lo + 60;
+        const span = hi - lo + 90;
         goal.tx = X(cur) - 4; goal.ty = (hi + lo) / 2;
-        goal.d = clamp(span / (2 * Math.tan(Math.PI / 8)) * 0.9, 70, 600);
+        goal.d = clamp(span / (2 * Math.tan(Math.PI / 8)) * 0.9, 100, 900);
     }
     function overview() {
         const lanes = branches.map(b => b.lane), lo = Math.min(0, ...lanes) - 30, hi = Math.max(0, ...lanes) + 30;
@@ -314,7 +315,7 @@
     });
     canvas.addEventListener("wheel", ev => {
         ev.preventDefault(); stopPlay(); follow = false;
-        goal.d = clamp(goal.d * Math.exp(ev.deltaY * 0.0012), 15, 1200);
+        goal.d = clamp(goal.d * Math.exp(ev.deltaY * 0.0012), 20, 1800);
     }, { passive: false });
     addEventListener("keydown", ev => { if (ev.key === "Escape") closeDetail(); });
 
@@ -325,7 +326,7 @@
         if (!selected) prevGoal = { ...goal, follow };
         selected = e; follow = false;
         const wp = new THREE.Vector3(); e.card.getWorldPosition(wp);
-        goal.d = 45; goal.tx = wp.x - 8; goal.ty = wp.y;
+        goal.d = 62; goal.tx = wp.x - 14; goal.ty = wp.y;
         if (cur < e.e) setYear(e.e, false);
         const d = $("detail");
         $("detail-chip").textContent = e.b.name; $("detail-chip").style.background = e.b.color;
@@ -342,7 +343,7 @@
             th.appendChild(im);
         });
         $("detail-gains").innerHTML = Object.entries(e.gains).sort((a, b) => b[1] - a[1])
-            .map(([k, v]) => "<li><span>" + skillById[k].label + "</span><b>+" + v + "</b></li>").join("");
+            .map(([k, v]) => "<li><span>" + (skillById[k] ? skillById[k].label : k) + "</span><b>+" + v + "</b></li>").join("");
         d.classList.remove("hidden");
         d.scrollTop = 0;
         pip.hl = new Set(Object.keys(e.gains)); pip.key = "";
@@ -364,7 +365,7 @@
             stopPlay(); closeDetail(true);
             if (cur < b.exps[0].s + 0.3) setYear(b.exps[0].s + 0.3, false);
             const last = Math.max(...b.exps.map(e => e.e));
-            goal.tx = (b.laneX + X(Math.min(last, NOW))) / 2; goal.ty = b.lane; goal.d = 100; follow = false;
+            goal.tx = (b.laneX + X(Math.min(last, NOW))) / 2; goal.ty = b.lane; goal.d = 115; follow = false;
         };
         b.li = li; legend.appendChild(li);
     });

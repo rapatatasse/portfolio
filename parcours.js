@@ -63,7 +63,8 @@ const PORTFOLIO_DATA = {
     { id: "normes",       label: "Normes & permis (ERP, RT2021)",  branch: "ingenierie" },
 
     { id: "web",          label: "Web (HTML/CSS)",                 branch: "code" },
-    { id: "js",           label: "JavaScript / Node.js",           branch: "code" },
+    { id: "js",           label: "JavaScript",                     branch: "code" },
+    { id: "nodejs",       label: "Node.js",                        branch: "code" },
     { id: "rails",        label: "Ruby on Rails",                  branch: "code" },
     { id: "laravel",      label: "Laravel / PHP",                  branch: "code" },
     { id: "bdd",          label: "Bases de données",               branch: "code" },
@@ -90,6 +91,7 @@ const PORTFOLIO_DATA = {
     { id: "logo",         label: "Logos / Identité visuelle",      branch: "art" },
     { id: "vectoriel",    label: "Dessin vectoriel (Inkscape)",    branch: "art" },
     { id: "print",        label: "Cartes de visite & flyers",      branch: "art" },
+    { id: "peinture",     label: "Peinture",                       branch: "art" },
     { id: "jeu",          label: "Conception de jeu de société",   branch: "art" },
     { id: "ecriture",     label: "Écriture & mise en scène",       branch: "art" },
     { id: "production",   label: "Fabrication & édition",          branch: "art" }
@@ -138,7 +140,7 @@ const PORTFOLIO_DATA = {
       id: "utobat", branch: "batiment", start: "2011-01", end: "2015-06",
       title: "Autoentrepreneur - Utobat", place: "Particuliers et professionnels",
       desc: "Bâtiment second œuvre pour particuliers et professionnels : électricité, placo, peinture, menuiserie…  Recherche avancée en économie d'énergie, méthode de construction écologique",
-      images: ["image/experience/utobat.png"],
+      images: ["image/experience/ent utobat.jpg", "image/experience/utobat.png"],
       gains: { electricite: 18, finitions: 28, chantier: 15, construction: 8, web: 15, print: 20, commercial: 30 }
     },
     {
@@ -267,8 +269,8 @@ const PORTFOLIO_DATA = {
     {
       id: "sites", branch: "code", start: "2018-06", end: "now",
       title: "Sites vitrines (WordPress, HTML)", place: "Clients Platon Formation",
-      desc: "Création de sites vitrines pour des clients : WordPress puis sites en HTML/CSS/JS (dépôts GitHub : AGPI, Securygard, Boxing Olympic Viennois, Chetot gîtes et élevage…).",
-      images: ["image/wordpress.png"],
+      desc: "Création de sites vitrines pour des clients : WordPress puis sites en HTML/CSS/JS avec travail de référencement (dépôts GitHub : AGPI, Securygard, Boxing Olympic Viennois, Chetot gîtes et élevage…).",
+      images: ["image/experience/site platon.png","image/experience/site agpi.png", "image/experience/site pilat.png", "image/experience/site boxing.png"],
       gains: { wordpress: 40, web: 35 }
     },
     {
@@ -315,10 +317,17 @@ const PORTFOLIO_DATA = {
     },
     {
       id: "devops", branch: "code", start: "2023-10", end: "2025-06",
-      title: "Docker & scripts PowerShell", place: "Environnements de développement",
-      desc: "Environnements Rails sous Docker pour les étudiants (appwagonwithdocker, RailsDockerNew avec Rails 7 et Devise) et outil PowerShell de gestion de fichiers.",
+      title: "Docker", place: "Environnements de développement",
+      desc: "Environnements Rails sous Docker pour les étudiants (appwagonwithdocker, RailsDockerNew avec Rails 7 et Devise)",
       images: [],
       gains: { devops: 45 }
+    },
+    {
+      id: "Python", branch: "code", start: "2025-10", end: "now",
+      title: "Python", place: "Environnements de développement",
+      desc: "Diverses applications sous python pour gestion de tâches administratives avec interface graphique (remplissage automatique de formulaire, gestion de fichiers, compression en lot, ...)",
+      images: ["image/experience/python.jpg"],
+      gains: { python: 45 }
     },
     {
       id: "kotlin", branch: "code", start: "2024-01", end: "now",
@@ -326,6 +335,13 @@ const PORTFOLIO_DATA = {
       desc: "Dernier projet : application de gestion de bornes et de comptes avec cartographie.",
       images: ["image/experience/kotlin (0).png", "image/experience/kotlin (1).png", "image/experience/kotlin (2).png", "image/experience/kotlin (3).png"],
       gains: { kotlin: 40 }
+    },
+      {
+      id: "nodeJS", branch: "code", start: "2025-06", end: "now",
+      title: "Application Node.js ", place: "Depuis 2025",
+      desc: "Dernier projet : application de jeux avec tree.JS, application de gestion de produit et suivi demande prix fournisseur.",
+      images: ["image/experience/node 1.png", "image/experience/node 2.png", "image/experience/node 3.png"],
+      gains: { nodejs: 40 }
     },
 
     /* ============ IA & AUTOMATISATION ============ */
@@ -410,6 +426,13 @@ const PORTFOLIO_DATA = {
       images: ["image/experience/theatre1.jpg","image/experience/theatre2.jpg","image/experience/theatre3.jpg","image/experience/theatre4.jpg"],
       gains: { ecriture: 40, personnel: 20, stress: 8 }
     },
+      {
+      id: "peinture", branch: "art", start: "2015-01", end: "2015-12",
+      title: "Peinture", place: "Création artistique",
+      desc: "Création de peintures",
+      images: ["image/experience/peinture pac man vs le chat.jpg"],
+      gains: { peinture: 30 }
+    },
     {
       id: "theatre-2024", branch: "art", start: "2024-01", end: "now",
       title: "Nouvelle pièce de théâtre", place: "Écrite et mise en scène · en répétition",
@@ -423,6 +446,14 @@ const PORTFOLIO_DATA = {
       desc: "Réalisation de logos et d'identités visuelles pour les clients, en dessin vectoriel avec Inkscape.",
       images: ["image/inkscape.png"],
       gains: { logo: 40, vectoriel: 45 }
+    },
+    {
+      id: "Jeux Vidéo", branch: "art", start: "2024-01", end: "now",
+      title: "Plateforme de jeux vidéo", place: "Développement web · Jeux interactifs",
+      desc: "Création d'une plateforme de jeux vidéo pour petits et grands sur jeux.platonformation.com coder avec tree.js et node.js",
+      images: ["image/experience/jeu 0.png","image/experience/jeu 1.png","image/experience/jeu 2.png","image/experience/jeu 3.png"],
+      gains: { jeu: 30, web: 25, production: 20 }
     }
+
   ]
 };
