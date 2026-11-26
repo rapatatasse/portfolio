@@ -100,6 +100,13 @@ const timelineData = {
             temps: "Home 3D",
             descriptif: "Plan d'extention avec diverses options de projection pour aide a la décision de la construction",
             photos: ["planvois (1).png", "planvois (2).png", "planvois (3).png"]
+        },
+    {
+            date: "2025",
+            titre: "Plan pour permis de construire",
+            temps: "Home 3D",
+            descriptif: "Plan complet depuis base client. Création des différents documents pour dépot des plans mairie",
+            photos: ["plandavid0.png", "plandavid1.png", "plandavid2.png"]
         }],
     //###########################Codeage###################################
     Codage: [{
