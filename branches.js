@@ -9,7 +9,7 @@ const PORTFOLIO_DATA = {
   person: {
     name: "Jonathan Chaffanjon",
     birth: "1984-06",
-    photo: "image/photo jonathan.jpg",
+    photo: "image/jonathan chaffanjon.webp",
     tagline: "Formateur · Développeur · Bâtisseur"
   },
 
@@ -22,7 +22,7 @@ const PORTFOLIO_DATA = {
   ],
 
   clients: [
-    "PAC diffusion", "Nexconec", "Artixium", "Securygard", "Arcada", "L'atelier Patisserie", "AGP", "Boxing club Viennois",
+    "PAC diffusion", "Nexconec", "Artixium", "MPI", "Securygard", "Arcada", "L'atelier Patisserie", "AGP", "Boxing club Viennois",
     "AMB", "Eco Bois Matériaux", "Les amis du Plateau", "Silcomp", "ASA irrigation", "GESR Energie"
   ],
 

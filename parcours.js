@@ -10,7 +10,7 @@ const PORTFOLIO_DATA = {
   person: {
     name: "Jonathan Chaffanjon",
     birth: "1984-06",
-    photo: "image/photo jonathan.jpg",
+    photo: "image/jonathan chaffanjon.webp",
     tagline: "Formateur · Développeur · Bâtisseur"
   },
 
@@ -98,25 +98,25 @@ const PORTFOLIO_DATA = {
   experiences: [
     /* ============ GESTION D'ENTREPRISE ============ */
     {
-      id: "resto-client", branch: "gestion", start: "1998-06", end: "2000-06",
+      id: "resto-client", branch: "gestion", start: "1998-06", end: "2006-06",
       title: "Restaurant familial : relation client", place: "Auberge Panoramique, St Etienne",
-      desc: "À 14 ans, premières tâches au restaurant familial : accueil, service en salle et relation avec les clients. Première école du contact humain et du service sous pression.",
+      desc: "À 14 ans, premières tâches au restaurant familial : accueil, service en salle et relation avec les clients. Première école du contact humain et du service sous pression. Vers 16 ans, on me confie la gestion du personnel : organisation du service, coordination de l'équipe en salle et en cuisine, jusqu'à la fermeture du restaurant. Apprentissage de la gestion du stress et de la pression en plein service.",
       images: [],
-      gains: { service: 20, stress: 10, polyvalence: 12 }
-    },
-    {
-      id: "resto-perso", branch: "gestion", start: "2000-06", end: "2006-06",
-      title: "Restaurant familial : gestion du personnel", place: "Auberge Panoramique, St Etienne",
-      desc: "Vers 16 ans, on me confie la gestion du personnel : organisation du service, coordination de l'équipe en salle et en cuisine, jusqu'à la fermeture du restaurant. Apprentissage de la gestion du stress et de la pression en plein service.",
-      images: [],
-      gains: { personnel: 20, stress: 20, polyvalence: 12, gestionResto: 12, service: 8 }
+      gains: { service: 20, stress: 20, polyvalence: 32 }
     },
     {
       id: "auberge-gestion", branch: "gestion", start: "2008-10", end: "2010-12",
       title: "Cogérant - Auberge du Tremplin", place: "Le Bessat (42660)",
-      desc: "Gestion du restaurant pendant un an, jusqu'à 100 couverts par service : équipe, approvisionnement, comptabilité, relation client.",
+      desc: "Gestion du restaurant pendant un an, jusqu'à 100 couverts par service : équipe, approvisionnement, comptabilité, fiche de paye avec TESE, gestion des fournisseurs, achats des matières premières, relation client.",
       images: [],
-      gains: { gestionResto: 30, personnel: 15, entreprendre: 10, stress: 15, service: 8 }
+      gains: { gestionResto: 30, personnel: 15, entreprendre: 20, stress: 15, service: 8 }
+    },
+      {
+      id: "UTOBAT", branch: "gestion", start: "2011-01", end: "2015-12",
+      title: "Gérant - UTOBAT", place: "OZON 07",
+      desc: "Autoentrepreneur dans le bâtiment second œuvre particulier et professionnel (électricité, placo, peinture, menuiserie…), facturation et gestion administrative, prospection client. création du site internet, des cartes de visite et des flyers, et recherche active de mes clients (service client et démarche commerciale).",
+      images: ["image/experience/ent utobat (1).png", "image/experience/ent utobat (2).png", "image/experience/ent utobat (3).png"],
+      gains: { direction: 40, entreprendre: 30, admin: 35, service: 12, personnel: 10 }
     },
     {
       id: "platon", branch: "gestion", start: "2017-01", end: "now",
@@ -137,8 +137,8 @@ const PORTFOLIO_DATA = {
     {
       id: "utobat", branch: "batiment", start: "2011-01", end: "2015-06",
       title: "Autoentrepreneur - Utobat", place: "Particuliers et professionnels",
-      desc: "Bâtiment second œuvre pour particuliers et professionnels : électricité, placo, peinture, menuiserie… Gestion complète de mon activité : création du site internet, des cartes de visite et des flyers, et recherche active de mes clients (service client et démarche commerciale).",
-      images: [],
+      desc: "Bâtiment second œuvre pour particuliers et professionnels : électricité, placo, peinture, menuiserie…  Recherche avancée en économie d'énergie, méthode de construction écologique",
+      images: ["image/experience/utobat.png"],
       gains: { electricite: 18, finitions: 28, chantier: 15, construction: 8, web: 15, print: 20, commercial: 30 }
     },
     {
@@ -400,14 +400,14 @@ const PORTFOLIO_DATA = {
       id: "brame", branch: "art", start: "2014-01", end: "2014-12",
       title: "Brame : jeu de société", place: "Création et auto-édition",
       desc: "Création d'un jeu de société, Brame : conception des règles et du matériel, fabrication confiée à des prestataires, puis auto-édition et commercialisation. Une expérience complète de la création au produit vendu : recherche de fabricants, budget, communication et vente.",
-      images: [],
+      images: ["image/experience/brame plateau.jpg","image/experience/brame regles.jpg","image/experience/brame salon.jpg","image/experience/brame vue de haut.jpg"],
       gains: { jeu: 40, production: 35, commercial: 20, entreprendre: 15, print: 10 }
     },
     {
       id: "theatre-2015", branch: "art", start: "2015-01", end: "2015-12",
       title: "Pièce de théâtre « Le corps… »", place: "Écriture, mise en scène et jeu",
       desc: "Écriture, mise en scène et jeu d'une pièce de théâtre : direction des comédiens, organisation des répétitions et coordination de toute l'équipe jusqu'à la représentation. Une expérience forte de gestion de personnes.",
-      images: [],
+      images: ["image/experience/theatre1.jpg","image/experience/theatre2.jpg","image/experience/theatre3.jpg","image/experience/theatre4.jpg"],
       gains: { ecriture: 40, personnel: 20, stress: 8 }
     },
     {

@@ -1,6 +1,6 @@
 (function () {
     const D = PORTFOLIO_DATA;
-    const K = 9;
+    const K = 12, LANE_K = 1.6;
     const MONTHS = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
     const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
     const smooth = t => { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
@@ -17,7 +17,7 @@
     const fmtDate = yr => { const y = Math.floor(yr + 1e-6); const m = clamp(Math.floor((yr - y) * 12 + 1e-6), 0, 11); return MONTHS[m] + " " + y; };
     const ageAt = yr => Math.floor(yr - BIRTH);
 
-    const branches = D.branches.map((b, i) => ({ ...b, index: i, z: (i - 2.5) * 1.6, exps: [] }));
+    const branches = D.branches.map((b, i) => ({ ...b, lane: b.lane * LANE_K, index: i, z: (i - 2.5) * 1.6, exps: [] }));
     const branchById = Object.fromEntries(branches.map(b => [b.id, b]));
     const skills = D.skills;
     const skillById = Object.fromEntries(skills.map(s => [s.id, s]));
@@ -51,7 +51,7 @@
         const cum = [0];
         for (let i = 1; i < pts.length; i++) cum.push(cum[i - 1] + pts[i].distanceTo(pts[i - 1]));
         const total = cum[cum.length - 1];
-        const tube = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), pts.length * 2, 0.22, 6, false);
+        const tube = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), pts.length * 2, 0.35, 6, false);
         const tubular = pts.length * 2;
         return { pts, cum, total, tube, tubular };
     }
@@ -68,37 +68,37 @@
     const mainEnd = X(NOW);
     const mainPts = []; for (let x = 0; x <= mainEnd; x += 1) mainPts.push(new THREE.Vector3(x, 0, 0));
     const mainPath = buildPath(mainPts);
-    mainPath.tube = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(mainPts), mainPts.length, 0.42, 8, false);
+    mainPath.tube = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(mainPts), mainPts.length, 0.6, 8, false);
     mainPath.tubular = mainPts.length;
     const mainMesh = new THREE.Mesh(mainPath.tube, new THREE.MeshBasicMaterial({ color: 0xe6edf3 }));
     scene.add(mainMesh);
 
     const birthDot = sphere(1.2, 0xffffff); scene.add(birthDot);
-    const birthLabel = label("Naissance · " + fmtDate(BIRTH).toLowerCase(), 1.6, "#e6edf3", "600");
-    birthLabel.position.set(8, 4.5, 0); scene.add(birthLabel);
+    const birthLabel = label("Naissance · " + fmtDate(BIRTH).toLowerCase(), 2.6, "#e6edf3", "600");
+    birthLabel.position.set(12, 5.5, 0); scene.add(birthLabel);
 
     const yearDots = [];
     for (let y = Math.ceil(BIRTH); y <= NOW; y++) {
         const big = y % 5 === 0;
-        const d = sphere(big ? 0.7 : 0.32, big ? 0xe6edf3 : 0x6e7681);
+        const d = sphere(big ? 1 : 0.45, big ? 0xe6edf3 : 0x6e7681);
         d.position.set(X(y), 0, 0); scene.add(d);
         const it = { yr: y, mesh: d, label: null };
         if (big) {
-            const l = label(y + " · " + ageAt(y) + " ans", 1.4, "#8b949e");
-            l.position.set(X(y), -3.4, 0); scene.add(l); it.label = l;
+            const l = label(y + " · " + ageAt(y) + " ans", 2.2, "#8b949e");
+            l.position.set(X(y), -4.6, 0); scene.add(l); it.label = l;
         }
         yearDots.push(it);
     }
 
-    const cursorDot = sphere(1, 0xffffff); scene.add(cursorDot);
+    const cursorDot = sphere(1.4, 0xffffff); scene.add(cursorDot);
     const cursorLine = new THREE.Line(
-        new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, -130, 0), new THREE.Vector3(0, 130, 0)]),
+        new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, -260, 0), new THREE.Vector3(0, 260, 0)]),
         new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.12 }));
     scene.add(cursorLine);
 
     /* Branches */
-    const cardW = 8, cardH = 5;
-    const SLOTS = [5.8, -5.8, 11.8, -11.8];
+    const cardW = 14, cardH = 8.75;
+    const SLOTS = [9.5, -9.5, 20, -20];
     const hitList = [];
 
     branches.forEach(b => {
@@ -124,8 +124,8 @@
         b.mesh = new THREE.Mesh(b.path.tube, b.mat);
         scene.add(b.mesh);
 
-        b.nameLabel = label(b.name, 2.1, b.color, "600");
-        b.nameLabel.position.set(laneX - 2, b.lane + 2.6, b.z);
+        b.nameLabel = label(b.name, 3.6, b.color, "600");
+        b.nameLabel.position.set(laneX - 3, b.lane + 4, b.z);
         b.nameLabel.center.set(1, 0.5);
         scene.add(b.nameLabel);
 
@@ -145,11 +145,11 @@
 
             const g = new THREE.Group(); g.position.set(x0, b.lane, b.z); scene.add(g);
             e.group = g;
-            e.node = sphere(0.95, color); g.add(e.node);
+            e.node = sphere(1.4, color); g.add(e.node);
             e.node.userData.exp = e;
 
             const spanLen = x1 - x0;
-            e.span = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, spanLen, 10), new THREE.MeshBasicMaterial({ color, transparent: true }));
+            e.span = new THREE.Mesh(new THREE.CylinderGeometry(0.75, 0.75, spanLen, 10), new THREE.MeshBasicMaterial({ color, transparent: true }));
             e.span.rotation.z = Math.PI / 2; e.span.userData.full = spanLen; scene.add(e.span);
             e.spanBase = { y: b.lane, z: b.z };
 
@@ -174,9 +174,9 @@
             if (e.images.length) {
                 const img = new Image();
                 img.onload = () => {
+                    const test = document.createElement("canvas"); test.width = test.height = 1;
+                    try { const c = test.getContext("2d"); c.drawImage(img, 0, 0, 1, 1); c.getImageData(0, 0, 1, 1); } catch (err) { return; }
                     drawCard(e, img);
-                    try { e.canvas.getContext("2d").getImageData(0, 0, 1, 1); } catch (err) { drawCard(e, null); }
-                    e.tex.needsUpdate = true;
                 };
                 img.src = e.images[0];
             }
@@ -224,7 +224,7 @@
     }
 
     /* ---------- Caméra ---------- */
-    const view = { tx: 0, ty: 0, d: 45 }, goal = { tx: 0, ty: 0, d: 45 };
+    const view = { tx: 0, ty: 0, d: 80 }, goal = { tx: 0, ty: 0, d: 80 };
     let follow = true;
     function resize() {
         const w = innerWidth, h = innerHeight;
@@ -239,12 +239,15 @@
         const vis = branches.filter(b => b.path && cur >= b.forkYear);
         let lo = 0, hi = 0;
         vis.forEach(b => { lo = Math.min(lo, b.lane); hi = Math.max(hi, b.lane); });
-        const span = hi - lo + 34;
+        const span = hi - lo + 60;
         goal.tx = X(cur) - 4; goal.ty = (hi + lo) / 2;
-        goal.d = clamp(span / (2 * Math.tan(Math.PI / 8)) * 0.9, 38, 260);
+        goal.d = clamp(span / (2 * Math.tan(Math.PI / 8)) * 0.9, 70, 600);
     }
     function overview() {
-        goal.tx = mainEnd / 2; goal.ty = 0; goal.d = mainEnd * 0.5; follow = false;
+        const lanes = branches.map(b => b.lane), lo = Math.min(0, ...lanes) - 30, hi = Math.max(0, ...lanes) + 30;
+        const t = 2 * Math.tan(Math.PI / 8);
+        goal.tx = mainEnd / 2; goal.ty = (hi + lo) / 2;
+        goal.d = Math.max((hi - lo) * 1.3 / t, mainEnd * 1.3 / (t * cam.aspect)); follow = false;
     }
 
     /* ---------- État / temps ---------- */
@@ -311,7 +314,7 @@
     });
     canvas.addEventListener("wheel", ev => {
         ev.preventDefault(); stopPlay(); follow = false;
-        goal.d = clamp(goal.d * Math.exp(ev.deltaY * 0.0012), 9, 700);
+        goal.d = clamp(goal.d * Math.exp(ev.deltaY * 0.0012), 15, 1200);
     }, { passive: false });
     addEventListener("keydown", ev => { if (ev.key === "Escape") closeDetail(); });
 
@@ -322,7 +325,7 @@
         if (!selected) prevGoal = { ...goal, follow };
         selected = e; follow = false;
         const wp = new THREE.Vector3(); e.card.getWorldPosition(wp);
-        goal.tx = wp.x; goal.ty = wp.y; goal.d = 13;
+        goal.d = 45; goal.tx = wp.x - 8; goal.ty = wp.y;
         if (cur < e.e) setYear(e.e, false);
         const d = $("detail");
         $("detail-chip").textContent = e.b.name; $("detail-chip").style.background = e.b.color;
@@ -361,7 +364,7 @@
             stopPlay(); closeDetail(true);
             if (cur < b.exps[0].s + 0.3) setYear(b.exps[0].s + 0.3, false);
             const last = Math.max(...b.exps.map(e => e.e));
-            goal.tx = (b.laneX + X(Math.min(last, NOW))) / 2; goal.ty = b.lane; goal.d = 55; follow = false;
+            goal.tx = (b.laneX + X(Math.min(last, NOW))) / 2; goal.ty = b.lane; goal.d = 100; follow = false;
         };
         b.li = li; legend.appendChild(li);
     });
