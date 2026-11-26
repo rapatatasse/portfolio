@@ -123,8 +123,8 @@ const PORTFOLIO_DATA = {
     {
       id: "platon", branch: "gestion", start: "2017-01", end: "now",
       title: "Gérant - Platon Formation (ex-Linkdigit)", place: "Annonay · EURL puis SARL",
-      desc: "Direction de Platon Formation, organisme certifié Qualiopi : formation informatique et bureautique, IA, cybersécurité, données et automatisation, mais aussi création d'applications et de sites sur mesure pour des clients de secteurs variés. Plus de 64 personnes formées, 4,5/5 de satisfaction. Mise en place de CRM / ERP (Dolibarr).",
-      images: [],
+      desc: "Direction de Platon Formation, organisme certifié Qualiopi : formation informatique et bureautique, IA, cybersécurité, données et automatisation, mais aussi création d'applications et de sites sur mesure pour des clients de secteurs variés. Plusierus 200 personnes formées du débutant à l'ingénieur. Portefeuille client entreprise régulier.",
+      images: ["image/experience/logo/00 logo.png"],
       gains: { direction: 40, entreprendre: 30, admin: 35, service: 12, personnel: 10 }
     },
 
